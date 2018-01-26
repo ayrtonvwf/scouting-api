@@ -1,0 +1,24 @@
+{
+  "name": "scouting",
+  "version": "1.0.0",
+  "description": "A public FRC scouting application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ayrtonvwf@gitlab.com/frc-2018/scouting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/frc-2018/scouting/issues"
+  },
+  "homepage": "https://gitlab.com/frc-2018/scouting#README",
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-watch": "^5.0.0"
+  }
+}
