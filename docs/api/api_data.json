@@ -220,15 +220,16 @@
     "title": "Request User Information",
     "name": "GetUser",
     "group": "User",
+    "version": "1.0.0",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "id",
-            "description": "<p>User id.</p>"
+            "description": "<p>User id (if not specified, the current user will be used).</p>"
           }
         ]
       }
@@ -281,7 +282,6 @@
         ]
       }
     },
-    "version": "0.0.0",
     "filename": "C:/projects/scouting/development/application/controllers/User.php",
     "groupTitle": "User"
   }
