@@ -5,6 +5,7 @@ define({ "api": [
     "title": "Retrieves a new token for the provided credentials",
     "name": "PostAuth",
     "group": "Auth",
+    "version": "1.0.0",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -38,7 +39,29 @@ define({ "api": [
         ]
       }
     },
-    "version": "0.0.0",
+    "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "get",
+    "url": "/auth/renew",
+    "title": "Retrieves a new token and invalidates the current one",
+    "name": "RenewAuth",
+    "group": "Auth",
+    "version": "1.0.0",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>A new token valid for 12 hours.</p>"
+          }
+        ]
+      }
+    },
     "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
     "groupTitle": "Auth"
   },
