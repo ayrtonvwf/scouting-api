@@ -20,7 +20,6 @@
     "dotenv": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-api-doc": "^2.2.0",
-    "gulp-apidoc": "^0.2.6",
     "gulp-watch": "^5.0.0"
   }
 }

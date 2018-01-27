@@ -14,15 +14,15 @@ gulp.task('copy', function() {
     return copy();
 });
 
+gulp.task('doc', function() {
+    return doc();
+});
+
 gulp.task('watch', function(done) {
     watch(dev+'/**/*', function() {
         copy();
         doc();
     });
-});
-
-gulp.task('doc', function() {
-    return doc();
 });
 
 function copy() {
