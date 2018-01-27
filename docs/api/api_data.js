@@ -39,18 +39,187 @@ define({ "api": [
       }
     },
     "version": "0.0.0",
-    "filename": "development/application/controllers/Auth.php",
+    "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
     "groupTitle": "Auth"
   },
   {
     "type": "get",
-    "url": "/user",
-    "title": "Request User information",
-    "name": "GetUser",
-    "group": "User",
+    "url": "/team/:id",
+    "title": "Request Team information",
+    "name": "GetTeam",
+    "group": "Team",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User id.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "number",
+            "description": "<p>Number of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "enabled",
+            "description": "<p>Wether the Team is enabled to submit evaluations.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "DateTime",
+            "optional": false,
+            "field": "created_at",
+            "description": "<p>Creation date of the Team.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
+    "groupTitle": "Team"
+  },
+  {
+    "type": "get",
+    "url": "/team/list",
+    "title": "Request Team List",
+    "name": "GetTeamsList",
+    "group": "Team",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "number_start",
+            "description": "<p>First team number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "number_end",
+            "description": "<p>Last team number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>Search string.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "teams",
+            "description": "<p>List of Teams.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "teams.id",
+            "description": "<p>Id of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "teams.name",
+            "description": "<p>Name of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "teams.number",
+            "description": "<p>Number of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "teams.enabled",
+            "description": "<p>Wether the Team is enabled to submit evaluations.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "DateTime",
+            "optional": false,
+            "field": "teams.created_at",
+            "description": "<p>Creation date of the Team.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
+    "groupTitle": "Team"
+  },
+  {
+    "type": "get",
+    "url": "/user/:id",
+    "title": "Request User Information",
+    "name": "GetUser",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id of the User.</p>"
+          },
           {
             "group": "Success 200",
             "type": "String",
@@ -90,7 +259,7 @@ define({ "api": [
       }
     },
     "version": "0.0.0",
-    "filename": "development/application/controllers/User.php",
+    "filename": "C:/projects/scouting/development/application/controllers/User.php",
     "groupTitle": "User"
   }
 ] });
