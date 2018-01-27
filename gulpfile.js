@@ -4,25 +4,34 @@ require('dotenv').config(); // loads .env file
 
 const gulp = require('gulp');
 const watch = require('gulp-watch');
-const apidoc = require('gulp-apidoc');
+const apidoc = require('gulp-api-doc');
 
 const dev = './development';
 const api_doc_path = './docs/api';
 const server = process.env.SERVER_PATH;
 
 gulp.task('copy', function() {
-    gulp.src([dev+'/**/*', dev+'/**/.*'])
-        .pipe(gulp.dest(server));
+    return copy();
 });
 
 gulp.task('watch', function(done) {
-    watch(dev+'/**/*', {path: dev})
-        .pipe(gulp.dest(server));
+    watch(dev+'/**/*', function() {
+        copy();
+        doc();
+    });
 });
 
-gulp.task('doc', function(done) {
-    apidoc({
-        src: dev,
-        dest: api_doc_path
-    }, done);
+gulp.task('doc', function() {
+    return doc();
 });
+
+function copy() {
+    return gulp.src([dev+'/**/*', dev+'/**/.*'])
+        .pipe(gulp.dest(server));
+}
+
+function doc() {
+    return gulp.src(dev)
+        .pipe(apidoc())
+        .pipe(gulp.dest(api_doc_path));
+}
