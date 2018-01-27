@@ -215,6 +215,29 @@
     "groupTitle": "Team"
   },
   {
+    "type": "delete",
+    "url": "/user",
+    "title": "Deletes the current User",
+    "name": "DeleteUser",
+    "group": "User",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>User password.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "groupTitle": "User"
+  },
+  {
     "type": "get",
     "url": "/user/:id",
     "title": "Request User Information",
@@ -278,6 +301,87 @@
             "optional": false,
             "field": "created_at",
             "description": "<p>Creation date of the User.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/user",
+    "title": "Creates a new User",
+    "name": "PostUser",
+    "group": "User",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>User name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User email address.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>User password.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "groupTitle": "User"
+  },
+  {
+    "type": "put",
+    "url": "/user",
+    "title": "Updates the current User",
+    "name": "PutUser",
+    "group": "User",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>New User name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "email",
+            "description": "<p>New User email address.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "password",
+            "description": "<p>New User password.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "old_password",
+            "description": "<p>Old User password.</p>"
           }
         ]
       }

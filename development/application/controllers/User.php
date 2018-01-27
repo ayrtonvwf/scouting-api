@@ -18,4 +18,39 @@ class User extends MY_Controller {
 	 * @apiSuccess {DateTime} created_at Creation date of the User.
 	 */
 	public function get(?int $id = null){ }
+
+	/**
+	 * @api {post} /user Creates a new User
+	 * @apiName PostUser
+	 * @apiGroup User
+	 * @apiVersion 1.0.0
+	 * 
+	 * @apiParam {String} name User name.
+	 * @apiParam {String} email User email address.
+	 * @apiParam {String} password User password.
+	 */
+	public function post(){ }
+
+	/**
+	 * @api {put} /user Updates the current User
+	 * @apiName PutUser
+	 * @apiGroup User
+	 * @apiVersion 1.0.0
+	 * 
+	 * @apiParam {String} [name] New User name.
+	 * @apiParam {String} [email] New User email address.
+	 * @apiParam {String} [password] New User password.
+	 * @apiParam {String} old_password Old User password.
+	 */
+	public function put(){ }
+
+	/**
+	 * @api {delete} /user Deletes the current User
+	 * @apiName DeleteUser
+	 * @apiGroup User
+	 * @apiVersion 1.0.0
+	 * 
+	 * @apiParam {String} password User password.
+	 */
+	public function delete(){ }
 }
