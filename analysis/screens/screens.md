@@ -1,5 +1,34 @@
 # SCOUTING APP SCREENS
 
+<!-- TOC -->
+
+- [SCOUTING APP SCREENS](#scouting-app-screens)
+    - [FUNCTIONAL REQUIREMENTS (only the main functionalities available on the screens)](#functional-requirements-only-the-main-functionalities-available-on-the-screens)
+        - [Teams management:](#teams-management)
+        - [Users management:](#users-management)
+        - [Period management:](#period-management)
+        - [Questions management:](#questions-management)
+        - [Evaluations management:](#evaluations-management)
+        - [Reports:](#reports)
+    - [USER SIDE](#user-side)
+        - [LEFT SIDE MENU ITEMS **[nav #menu .menu]**](#left-side-menu-items-nav-menu-menu)
+        - [HOME](#home)
+        - [DROP DOWN PANE USER](#drop-down-pane-user)
+        - [SEARCH](#search)
+        - [TEAM](#team)
+        - [Scouting](#scouting)
+        - [Reports](#reports)
+        - [SETTINGS](#settings)
+    - [ADMIN SIDE](#admin-side)
+        - [LEFT SIDE MENU ITEMS **[nav #menu .menu]**](#left-side-menu-items-nav-menu-menu-1)
+        - [HOME](#home-1)
+        - [SEARCH](#search-1)
+        - [QUESTIONS](#questions)
+        - [BEHAVIOR](#behavior)
+        - [SETTINGS](#settings-1)
+
+<!-- /TOC -->
+
 <!-- Some suggestions are shown as comments, enjoy -->
 _Important notes are shown in italic_.
 
@@ -72,7 +101,7 @@ The home screen must be able to show the main information about the user team an
 The drop down pane user menu will show some basic information about the user and the user accounts for switching purposes.
 
 - User name <!-- - User photo --> <!-- - User description -->
-- Edit : **[.user-btn]**
+- Settings : **[.user-btn tooltip]** _Go to settings page,_ tooltip: Edit your information or modify your password
 - Sign out **[.user-btn]** <!-- Maybe a new drop down menu for changing the team in the app can be more intuitive, but I think that is more simple in this way -->
 - Teams _(if the user clicks on a team number, the active team in the app is changed to it)_: _For example:_ 
  - #9999 **[link]**
@@ -149,7 +178,21 @@ _This section must show reports about the evaluations, that is, the team members
 | Name  | Team's robot |
 |-------|--------------|
 | Isaac | #9999        | 
- 
+
+
+### SETTINGS
+
+_Show basic information about the user, allowing modifications_
+<!-- Some extra informations could be a nice feature, like facebook link, age, phone number, etc (visible for teams) -->
+
+- Name **[.input]**
+- Email **[.input]**
+- Teams **[.input]**
+- Password _(changes the password)_ **[.input]**
+- Edit **[.btn-green]** _Opens a modal, insert the password to make the changes, or cancel the operation_
+    - Ok  **[.btn-green]**
+    - Cancel  **[.btn-red]**
+
 ---
 
 ## ADMIN SIDE
@@ -159,6 +202,14 @@ _The same basic structure will be used, the behavior is analogous as the USER SI
 _The tables might follow the following pattern, but with the **lite admin** theming:_
 
 ![basic_table](basic_table.png)
+
+### LEFT SIDE MENU ITEMS **[nav #menu .menu]**
+
+- Home _(The logo in the top left corner)_
+- Search _(The search box after the home link)_
+- Questions **[.menu-link]**
+- Behavior **[.menu-link]**
+- Settings **[.menu-link]**
 
 ### HOME
 
@@ -174,7 +225,19 @@ _Search for users and teams, show the result, display a button to delete or bloc
 - Display a form to create a new question.
 - Display a list with question types, show button to delete and modify question types if necessary.
 
-### PERIOD
+### BEHAVIOR
 
 - Display periods of the system. Display button to delete and modify a period if necessary.
 - Display a form to create a new period.
+
+### SETTINGS
+
+_Configure the password, the name, the email..., similar as the USER SIDE settings_
+
+- Name **[.input]**
+- Email **[.input]**
+- Teams **[.input]**
+- Password _(changes the password)_ **[.input]**
+- Edit **[.btn-green]** _Opens a modal, insert the password to make the changes, or cancel the operation_
+    - Ok  **[.btn-green]**
+    - Cancel  **[.btn-red]**
