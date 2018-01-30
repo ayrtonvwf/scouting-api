@@ -2,7 +2,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/auth",
-    "title": "Retrieves a new token for the provided credentials",
+    "title": "Requests a new token for the provided credentials",
     "name": "AuthPost",
     "group": "Auth",
     "version": "1.0.0",

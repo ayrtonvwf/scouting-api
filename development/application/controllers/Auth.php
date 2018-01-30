@@ -8,7 +8,7 @@ class Auth extends MY_Controller {
 	}
 
 	/**
-	 * @api {post} /auth Retrieves a new token for the provided credentials
+	 * @api {post} /auth Requests a new token for the provided credentials
 	 * @apiName AuthPost
 	 * @apiGroup Auth
 	 * @apiVersion 1.0.0
