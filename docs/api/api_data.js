@@ -35,6 +35,13 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>A new token valid for 12 hours.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "user_id",
+            "description": "<p>Id of the user which the token is attached on.</p>"
           }
         ]
       }

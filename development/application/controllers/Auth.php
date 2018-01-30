@@ -17,6 +17,7 @@ class Auth extends MY_Controller {
 	 * @apiParam {String} password User's password.
 	 *
 	 * @apiSuccess {String} token A new token valid for 12 hours.
+	 * @apiSuccess {String} user_id Id of the user which the token is attached on.
 	 */
 	public function post() {}
 
