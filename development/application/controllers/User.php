@@ -8,7 +8,7 @@ class User extends MY_Controller {
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
-	 * @apiParam {Number} [id] User id (if not specified, the current user will be used).
+	 * @apiParam {Number} [id] User id.
 	 * @apiParam {Number} [team_id] Id of the Team.
 	 * @apiParam {String} [search] Search string.
 	 *

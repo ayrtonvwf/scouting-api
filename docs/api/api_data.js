@@ -600,7 +600,7 @@ define({ "api": [
             "type": "Number",
             "optional": true,
             "field": "id",
-            "description": "<p>User id (if not specified, the current user will be used).</p>"
+            "description": "<p>User id.</p>"
           },
           {
             "group": "Parameter",
