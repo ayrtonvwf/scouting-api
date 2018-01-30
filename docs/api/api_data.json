@@ -472,8 +472,8 @@
   },
   {
     "type": "get",
-    "url": "/team/:id",
-    "title": "Request Team information",
+    "url": "/team",
+    "title": "Request Team List",
     "name": "TeamGet",
     "group": "Team",
     "version": "1.0.0",
@@ -483,67 +483,10 @@
           {
             "group": "Parameter",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "id",
-            "description": "<p>User id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Id of the Team.</p>"
+            "description": "<p>Team id.</p>"
           },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Name of the Team.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "number",
-            "description": "<p>Number of the Team.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "enabled",
-            "description": "<p>Wether the Team is enabled to submit evaluations.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "DateTime",
-            "optional": false,
-            "field": "created_at",
-            "description": "<p>Creation date of the Team.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
-    "groupTitle": "Team"
-  },
-  {
-    "type": "get",
-    "url": "/team/list",
-    "title": "Request Team List",
-    "name": "TeamGetList",
-    "group": "Team",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
           {
             "group": "Parameter",
             "type": "Number",
