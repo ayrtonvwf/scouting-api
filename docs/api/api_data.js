@@ -316,8 +316,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/question/:id",
-    "title": "Request Question information",
+    "url": "/question",
+    "title": "Request Question List",
     "name": "QuestionGet",
     "group": "Question",
     "version": "1.0.0",
@@ -327,67 +327,10 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "id",
-            "description": "<p>Question id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Id of the Team.</p>"
+            "description": "<p>Id of the Question.</p>"
           },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "period_id",
-            "description": "<p>Id of the Period of the Questions.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "description",
-            "description": "<p>Description of the Question.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "question_type_id",
-            "description": "<p>Id of the Type of the Question.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "DateTime",
-            "optional": false,
-            "field": "created_at",
-            "description": "<p>Creation date of the Question.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/Question.php",
-    "groupTitle": "Question"
-  },
-  {
-    "type": "get",
-    "url": "/question/list",
-    "title": "Request Questions List",
-    "name": "QuestionGetList",
-    "group": "Question",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
           {
             "group": "Parameter",
             "type": "Number",
