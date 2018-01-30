@@ -515,6 +515,70 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/question_type",
+    "title": "Request Question Type List",
+    "name": "QuestionTypeGet",
+    "group": "QuestionType",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "id",
+            "description": "<p>Id of the Question Type.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>Search string.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "question_types",
+            "description": "<p>List of Question Types</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "question_types.id",
+            "description": "<p>Id of the Question Type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "question_types.name",
+            "description": "<p>Name of the Question Type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "DateTime",
+            "optional": false,
+            "field": "question_types.created_at",
+            "description": "<p>Creation date of the Question Type.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Question_type.php",
+    "groupTitle": "QuestionType"
+  },
+  {
+    "type": "get",
     "url": "/team/:id",
     "title": "Request Team information",
     "name": "TeamGet",
