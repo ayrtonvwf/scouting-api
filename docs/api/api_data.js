@@ -609,6 +609,7 @@ define({ "api": [
     "name": "UserGet",
     "group": "User",
     "version": "1.0.0",
+    "description": "<p>The only users that are accessible are the ones in the same teams as the current user</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -723,49 +724,13 @@ define({ "api": [
     "groupTitle": "User"
   },
   {
-    "type": "post",
-    "url": "/user",
-    "title": "Creates a new User",
-    "name": "UserPost",
-    "group": "User",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>User name.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>User email address.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "password",
-            "description": "<p>User password.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/User.php",
-    "groupTitle": "User"
-  },
-  {
     "type": "put",
     "url": "/user",
-    "title": "Updates the current User",
+    "title": "Updates or creates a User",
     "name": "UserPut",
     "group": "User",
     "version": "1.0.0",
+    "description": "<p>If there's no token, a new user is created. Else, the current user is updated.</p>",
     "parameter": {
       "fields": {
         "Parameter": [

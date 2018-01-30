@@ -8,6 +8,8 @@ class User extends MY_Controller {
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
+	 * @apiDescription The only users that are accessible are the ones in the same teams as the current user
+	 * 
 	 * @apiParam {Number} [id] User id.
 	 * @apiParam {Number} [team_id] Id of the Team.
 	 * @apiParam {String} [search] Search string.
@@ -27,22 +29,11 @@ class User extends MY_Controller {
 	public function get(){ }
 
 	/**
-	 * @api {post} /user Creates a new User
-	 * @apiName UserPost
-	 * @apiGroup User
-	 * @apiVersion 1.0.0
-	 * 
-	 * @apiParam {String} name User name.
-	 * @apiParam {String} email User email address.
-	 * @apiParam {String} password User password.
-	 */
-	public function post(){ }
-
-	/**
-	 * @api {put} /user Updates the current User
+	 * @api {put} /user Updates or creates a User
 	 * @apiName UserPut
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
+	 * @apiDescription If there's no token, a new user is created. Else, the current user is updated.
 	 * 
 	 * @apiParam {String} [name] New User name.
 	 * @apiParam {String} [email] New User email address.
