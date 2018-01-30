@@ -18,19 +18,7 @@ class Auth extends MY_Controller {
 	 *
 	 * @apiSuccess {String} token A new token valid for 12 hours.
 	 */
-	public function post() {
-		if (empty($this->data->email)) {
-			echo json_encode(['error' => 'E-mail is required']);
-			$this->_exit(400);
-		}
-
-		if (empty($this->data->password)) {
-			echo json_encode(['error' => 'Password is required']);
-			$this->_exit(400);
-		}
-
-		echo json_encode(['token' => 'test_token_123456']);
-	}
+	public function post() {}
 
 	/**
 	 * @api {get} /auth/renew Retrieves a new token and invalidates the current one
