@@ -3,21 +3,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends MY_Controller {
 	/**
-	 * @api {get} /user/:id Request User Information
+	 * @api {get} /user Request User Information
 	 * @apiName UserGet
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
 	 * @apiParam {Number} [id] User id (if not specified, the current user will be used).
+	 * @apiParam {Number} [team_id] Id of the Team.
+	 * @apiParam {String} [search] Search string.
 	 *
-	 * @apiSuccess {Number} id Id of the User.
-	 * @apiSuccess {String} name Name of the User.
-	 * @apiSuccess {String} email Email of the User.
-	 * @apiSuccess {Boolean} verified_email Whether the User has verified it's email address.
-	 * @apiSuccess {Boolean} enabled Whether the User is enabled for submiting evaluations.
-	 * @apiSuccess {DateTime} created_at Creation date of the User.
+	 * @apiSuccess {Object[]} users List of Users.
+	 * @apiSuccess {Number} users.id Id of the User.
+	 * @apiSuccess {String} users.name Name of the User.
+	 * @apiSuccess {String} users.email Email of the User.
+	 * @apiSuccess {Boolean} users.verified_email Whether the User has verified it's email address.
+	 * @apiSuccess {Boolean} users.enabled Whether the User is enabled for submiting evaluations.
+	 * @apiSuccess {DateTime} users.created_at Creation date of the User.
+	 * @apiSuccess {Object[]} users.teams List of Teams that the user is in.
+	 * @apiSuccess {Number} users.teams.id Id of the Team.
+	 * @apiSuccess {String} users.teams.name Name of the Team.
+	 * @apiSuccess {Number} users.teams.number Number of the Team.
 	 */
-	public function get(?int $id = null){ }
+	public function get(){ }
 
 	/**
 	 * @api {post} /user Creates a new User

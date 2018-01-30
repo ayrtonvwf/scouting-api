@@ -587,7 +587,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/user/:id",
+    "url": "/user",
     "title": "Request User Information",
     "name": "UserGet",
     "group": "User",
@@ -601,6 +601,20 @@ define({ "api": [
             "optional": true,
             "field": "id",
             "description": "<p>User id (if not specified, the current user will be used).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "team_id",
+            "description": "<p>Id of the Team.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>Search string.</p>"
           }
         ]
       }
@@ -610,45 +624,80 @@ define({ "api": [
         "Success 200": [
           {
             "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "users",
+            "description": "<p>List of Users.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "Number",
             "optional": false,
-            "field": "id",
+            "field": "users.id",
             "description": "<p>Id of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "name",
+            "field": "users.name",
             "description": "<p>Name of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "email",
+            "field": "users.email",
             "description": "<p>Email of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "verified_email",
+            "field": "users.verified_email",
             "description": "<p>Whether the User has verified it's email address.</p>"
           },
           {
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "enabled",
+            "field": "users.enabled",
             "description": "<p>Whether the User is enabled for submiting evaluations.</p>"
           },
           {
             "group": "Success 200",
             "type": "DateTime",
             "optional": false,
-            "field": "created_at",
+            "field": "users.created_at",
             "description": "<p>Creation date of the User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "users.teams",
+            "description": "<p>List of Teams that the user is in.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "users.teams.id",
+            "description": "<p>Id of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "users.teams.name",
+            "description": "<p>Name of the Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "users.teams.number",
+            "description": "<p>Number of the Team.</p>"
           }
         ]
       }
