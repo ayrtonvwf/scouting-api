@@ -23,6 +23,10 @@
     "gulp-watch": "^5.0.0"
   },
   "apidoc": {
+    "header": {
+      "title": "General notes",
+      "filename": "analysis/api_doc_header.md"
+    },
     "order": [
       "Auth",
       "AuthPost",

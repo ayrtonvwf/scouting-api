@@ -1,4 +1,8 @@
 define({
+  "header": {
+    "title": "General notes",
+    "content": "<h1>General notes</h1>\n<h2>Token</h2>\n<p>In almost every request, a header &quot;Token&quot; is required.</p>\n<p>The exceptions are when the user is not logged in (account creation and the login proccess itself).</p>\n<p>A token is valid for 12 hours, and you can &quot;renew&quot; it anytime you want.</p>\n<h2>Team responsible</h2>\n<p>The first user to be assigned in a team is the team's administrator on the system.</p>\n<p>This user needs to get verified for being the administrator.</p>\n<p>The verification proccess is yet being designed, but may be a manual proccess (like some kind of post on Facebook, proving that the person has access to the Facebook page's administration).</p>\n"
+  },
   "order": [
     "Auth",
     "AuthPost",
@@ -28,7 +32,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-01-30T21:20:08.383Z",
+    "time": "2018-01-30T22:47:58.513Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }
