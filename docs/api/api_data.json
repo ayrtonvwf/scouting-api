@@ -231,8 +231,8 @@
   },
   {
     "type": "get",
-    "url": "/period/:id",
-    "title": "Request Question information",
+    "url": "/period",
+    "title": "Request Period List",
     "name": "PeriodGet",
     "group": "Period",
     "version": "1.0.0",
@@ -242,60 +242,10 @@
           {
             "group": "Parameter",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "id",
             "description": "<p>Period id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Id of the Period.</p>"
           },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Name of the Period.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "position",
-            "description": "<p>Position of the Period.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "DateTime",
-            "optional": false,
-            "field": "created_at",
-            "description": "<p>Creation date of the Period.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/Period.php",
-    "groupTitle": "Period"
-  },
-  {
-    "type": "get",
-    "url": "/period/list",
-    "title": "Request Periods List",
-    "name": "PeriodGetList",
-    "group": "Period",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
           {
             "group": "Parameter",
             "type": "Number",
