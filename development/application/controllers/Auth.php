@@ -9,7 +9,7 @@ class Auth extends MY_Controller {
 
 	/**
 	 * @api {post} /auth Retrieves a new token for the provided credentials
-	 * @apiName PostAuth
+	 * @apiName AuthPost
 	 * @apiGroup Auth
 	 * @apiVersion 1.0.0
 	 *
@@ -34,7 +34,7 @@ class Auth extends MY_Controller {
 
 	/**
 	 * @api {get} /auth/renew Retrieves a new token and invalidates the current one
-	 * @apiName RenewAuth
+	 * @apiName AuthRenew
 	 * @apiGroup Auth
 	 * @apiVersion 1.0.0
 	 *

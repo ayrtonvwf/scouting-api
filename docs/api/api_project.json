@@ -1,4 +1,14 @@
 {
+  "order": [
+    "AuthPost",
+    "AuthRenew",
+    "UserGet",
+    "UserPost",
+    "UserPut",
+    "UserDelete",
+    "TeamGet",
+    "TeamGetList"
+  ],
   "name": "scouting",
   "version": "1.0.0",
   "description": "A public FRC scouting application",
@@ -7,7 +17,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-01-27T19:13:47.322Z",
+    "time": "2018-01-30T00:17:57.524Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }

@@ -3,7 +3,7 @@ define({ "api": [
     "type": "post",
     "url": "/auth",
     "title": "Retrieves a new token for the provided credentials",
-    "name": "PostAuth",
+    "name": "AuthPost",
     "group": "Auth",
     "version": "1.0.0",
     "parameter": {
@@ -46,7 +46,7 @@ define({ "api": [
     "type": "get",
     "url": "/auth/renew",
     "title": "Retrieves a new token and invalidates the current one",
-    "name": "RenewAuth",
+    "name": "AuthRenew",
     "group": "Auth",
     "version": "1.0.0",
     "success": {
@@ -69,7 +69,7 @@ define({ "api": [
     "type": "get",
     "url": "/team/:id",
     "title": "Request Team information",
-    "name": "GetTeam",
+    "name": "TeamGet",
     "group": "Team",
     "version": "1.0.0",
     "parameter": {
@@ -133,7 +133,7 @@ define({ "api": [
     "type": "get",
     "url": "/team/list",
     "title": "Request Team List",
-    "name": "GetTeamsList",
+    "name": "TeamGetList",
     "group": "Team",
     "version": "1.0.0",
     "parameter": {
@@ -218,7 +218,7 @@ define({ "api": [
     "type": "delete",
     "url": "/user",
     "title": "Deletes the current User",
-    "name": "DeleteUser",
+    "name": "UserDelete",
     "group": "User",
     "version": "1.0.0",
     "parameter": {
@@ -241,7 +241,7 @@ define({ "api": [
     "type": "get",
     "url": "/user/:id",
     "title": "Request User Information",
-    "name": "GetUser",
+    "name": "UserGet",
     "group": "User",
     "version": "1.0.0",
     "parameter": {
@@ -312,7 +312,7 @@ define({ "api": [
     "type": "post",
     "url": "/user",
     "title": "Creates a new User",
-    "name": "PostUser",
+    "name": "UserPost",
     "group": "User",
     "version": "1.0.0",
     "parameter": {
@@ -349,7 +349,7 @@ define({ "api": [
     "type": "put",
     "url": "/user",
     "title": "Updates the current User",
-    "name": "PutUser",
+    "name": "UserPut",
     "group": "User",
     "version": "1.0.0",
     "parameter": {

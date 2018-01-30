@@ -5,7 +5,7 @@ class Team extends MY_Controller {
 
 	/**
 	 * @api {get} /team/:id Request Team information
-	 * @apiName GetTeam
+	 * @apiName TeamGet
 	 * @apiGroup Team
 	 * @apiVersion 1.0.0
 	 * 
@@ -21,7 +21,7 @@ class Team extends MY_Controller {
 
 	/**
 	 * @api {get} /team/list Request Team List
-	 * @apiName GetTeamsList
+	 * @apiName TeamGetList
 	 * @apiGroup Team
 	 * @apiVersion 1.0.0
 	 * 

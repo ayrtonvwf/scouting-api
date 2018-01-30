@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends MY_Controller {
 	/**
 	 * @api {get} /user/:id Request User Information
-	 * @apiName GetUser
+	 * @apiName UserGet
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
@@ -21,7 +21,7 @@ class User extends MY_Controller {
 
 	/**
 	 * @api {post} /user Creates a new User
-	 * @apiName PostUser
+	 * @apiName UserPost
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
@@ -33,7 +33,7 @@ class User extends MY_Controller {
 
 	/**
 	 * @api {put} /user Updates the current User
-	 * @apiName PutUser
+	 * @apiName UserPut
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
@@ -46,7 +46,7 @@ class User extends MY_Controller {
 
 	/**
 	 * @api {delete} /user Deletes the current User
-	 * @apiName DeleteUser
+	 * @apiName UserDelete
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
 	 * 
