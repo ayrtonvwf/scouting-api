@@ -67,6 +67,170 @@
   },
   {
     "type": "get",
+    "url": "/evaluation",
+    "title": "Request Evaluation List",
+    "name": "EvaluationGet",
+    "group": "Evaluation",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "id",
+            "description": "<p>Id of the evaluation.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "team_id",
+            "description": "<p>Id of the evaluated Team.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "date_start",
+            "description": "<p>Start date of the evaluation.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "end_start",
+            "description": "<p>End date of the evaluation.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "evaluations",
+            "description": "<p>List of Evaluations</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "evaluations.id",
+            "description": "<p>Id of the Evaluation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "evaluations.team_id",
+            "description": "<p>Id of the evaluated Team.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "evaluations.user_id",
+            "description": "<p>Id of the User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "DateTime",
+            "optional": false,
+            "field": "evaluations.created_at",
+            "description": "<p>Creation date of the Evaluation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "evaluations.answers",
+            "description": "<p>List of Answers in the Evaluation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "evaluations.answers.id",
+            "description": "<p>Id of the Answer.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "evaluations.answers.question_id",
+            "description": "<p>Id of the Question.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "evaluations.answers.value",
+            "description": "<p>Value of the Answer.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Evaluation.php",
+    "groupTitle": "Evaluation"
+  },
+  {
+    "type": "put",
+    "url": "/evaluation",
+    "title": "Save or update Evaluation",
+    "name": "EvaluationPut",
+    "group": "Evaluation",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "id",
+            "description": "<p>Id of the Evaluation (if update).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "team_id",
+            "description": "<p>Id of the evaluated Team.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object[]",
+            "optional": false,
+            "field": "answers",
+            "description": "<p>Answers of the Evaluation.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "answers.question_id",
+            "description": "<p>Id of the Question.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "answers.value",
+            "description": "<p>Value of the Answer.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Evaluation.php",
+    "groupTitle": "Evaluation"
+  },
+  {
+    "type": "get",
     "url": "/period/:id",
     "title": "Request Question information",
     "name": "PeriodGet",
