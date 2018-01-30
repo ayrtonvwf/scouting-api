@@ -1,5 +1,15 @@
 define({ "api": [
   {
+    "type": "delete",
+    "url": "/auth",
+    "title": "Deletes the current Token",
+    "name": "AuthDelete",
+    "group": "Auth",
+    "version": "1.0.0",
+    "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
+    "groupTitle": "Auth"
+  },
+  {
     "type": "post",
     "url": "/auth",
     "title": "Requests a new token for the provided credentials",

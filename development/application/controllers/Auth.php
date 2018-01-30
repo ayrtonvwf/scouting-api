@@ -30,4 +30,12 @@ class Auth extends MY_Controller {
 	 * @apiSuccess {String} token A new token valid for 12 hours.
 	 */
 	public function renew() {}
+	
+	/**
+	 * @api {delete} /auth Deletes the current Token
+	 * @apiName AuthDelete
+	 * @apiGroup Auth
+	 * @apiVersion 1.0.0
+	 */
+	public function delete() {}
 }
