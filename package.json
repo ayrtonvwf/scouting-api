@@ -24,14 +24,25 @@
   },
   "apidoc": {
     "order": [
+      "Auth",
       "AuthPost",
       "AuthRenew",
+      "AuthDelete",
+      "User",
       "UserGet",
-      "UserPost",
       "UserPut",
       "UserDelete",
+      "Team",
       "TeamGet",
-      "TeamGetList"
+      "Period",
+      "PeriodGet",
+      "QuestionType",
+      "QuestionTypeGet",
+      "Question",
+      "QuestionGet",
+      "Evaluation",
+      "EvaluationGet",
+      "EvaluationPut"
     ]
   }
 }

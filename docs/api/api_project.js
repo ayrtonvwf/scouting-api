@@ -1,13 +1,24 @@
 define({
   "order": [
+    "Auth",
     "AuthPost",
     "AuthRenew",
+    "AuthDelete",
+    "User",
     "UserGet",
-    "UserPost",
     "UserPut",
     "UserDelete",
+    "Team",
     "TeamGet",
-    "TeamGetList"
+    "Period",
+    "PeriodGet",
+    "QuestionType",
+    "QuestionTypeGet",
+    "Question",
+    "QuestionGet",
+    "Evaluation",
+    "EvaluationGet",
+    "EvaluationPut"
   ],
   "name": "scouting",
   "version": "1.0.0",
@@ -17,7 +28,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-01-30T21:12:43.187Z",
+    "time": "2018-01-30T21:20:08.383Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }
