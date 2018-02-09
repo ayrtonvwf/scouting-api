@@ -35,6 +35,7 @@
       "User",
       "UserGet",
       "UserPut",
+      "UserPost",
       "UserDelete",
       "Team",
       "TeamGet",

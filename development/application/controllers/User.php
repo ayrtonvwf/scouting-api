@@ -29,16 +29,29 @@ class User extends MY_Controller {
 	public function get(){ }
 
 	/**
-	 * @api {put} /user Updates or creates a User
+	 * @api {post} /user Creates a new User
+	 * @apiName UserPost
+	 * @apiGroup User
+	 * @apiVersion 1.0.0
+	 * 
+	 * @apiParam {String} name New User name.
+	 * @apiParam {String} email New User email address.
+	 * @apiParam {String} password New User password.
+	 * @apiParam {String} re_password Same password again.
+	 */
+	public function post(){ }
+
+	/**
+	 * @api {put} /user Updates the current User
 	 * @apiName UserPut
 	 * @apiGroup User
 	 * @apiVersion 1.0.0
-	 * @apiDescription If there's no token, a new user is created. Else, the current user is updated.
 	 * 
 	 * @apiParam {String} [name] New User name.
 	 * @apiParam {String} [email] New User email address.
-	 * @apiParam {String} [password] New User password.
-	 * @apiParam {String} old_password Old User password.
+	 * @apiParam {String} [new_password] New User password.
+	 * @apiParam {String} [re_password] Same password again (only if changed the password).
+	 * @apiParam {String} password User password confirmation.
 	 */
 	public function put(){ }
 

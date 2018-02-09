@@ -724,13 +724,56 @@ define({ "api": [
     "groupTitle": "User"
   },
   {
+    "type": "post",
+    "url": "/user",
+    "title": "Creates a new User",
+    "name": "UserPost",
+    "group": "User",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>New User name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>New User email address.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>New User password.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "re_password",
+            "description": "<p>Same password again.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "groupTitle": "User"
+  },
+  {
     "type": "put",
     "url": "/user",
-    "title": "Updates or creates a User",
+    "title": "Updates the current User",
     "name": "UserPut",
     "group": "User",
     "version": "1.0.0",
-    "description": "<p>If there's no token, a new user is created. Else, the current user is updated.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -752,15 +795,22 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "password",
+            "field": "new_password",
             "description": "<p>New User password.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": true,
+            "field": "re_password",
+            "description": "<p>Same password again (only if changed the password).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
             "optional": false,
-            "field": "old_password",
-            "description": "<p>Old User password.</p>"
+            "field": "password",
+            "description": "<p>User password confirmation.</p>"
           }
         ]
       }
