@@ -45,6 +45,9 @@ class User extends MY_Controller {
 	 * @apiParam {String} email New User email address.
 	 * @apiParam {String} password New User password.
 	 * @apiParam {String} re_password Same password again.
+	 * 
+	 * @apiUse ErrorPostValidation
+	 * @apiError (500) {Object} USER_POST_FAIL The usar couldn't be created on the database. Probably, the email is already registered.
 	 */
 	public function post() : void {
 		if (!$this->_post_validate()) {
@@ -55,6 +58,7 @@ class User extends MY_Controller {
 		$user = get_array_values($this->data, ['name', 'email', 'password']);
 		$user['password'] = password_hash($user['password'], PASSWORD_DEFAULT);
 		if (!$user_id = $this->user_model->save($user)) {
+			echo json_encode(['error_code' => 'USER_POST_FAIL']);
 			$this->_exit(500);
 		}
 
@@ -64,7 +68,7 @@ class User extends MY_Controller {
 	private function _post_validate() : bool {
 		$this->form_validation->set_data($this->data);
 		$this->form_validation->set_rules('name', 'Name', 'strip_tags|trim|required|max_length[60]');
-		$this->form_validation->set_rules('email', 'Email', 'strip_tags|trim|required|max_length[200]');
+		$this->form_validation->set_rules('email', 'Email', 'strip_tags|trim|required|valid_email|max_length[200]|is_unique[user.email]');
 		$this->form_validation->set_rules('password', 'Password', 'required|max_length[50]|min_length[6]');
 		$this->form_validation->set_rules('re_password', 'Repeat password', 'required|matches[password]');
 		return $this->form_validation->run();

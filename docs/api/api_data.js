@@ -56,6 +56,44 @@ define({ "api": [
         ]
       }
     },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "type": "Object",
+            "optional": false,
+            "field": "INVALID_POST_DATA",
+            "description": "<p>There's something wrong with the posted data.</p>"
+          }
+        ],
+        "401": [
+          {
+            "group": "401",
+            "type": "Object",
+            "optional": false,
+            "field": "AUTH_POST_INVALID_PASSWORD",
+            "description": "<p>The password is wrong.</p>"
+          },
+          {
+            "group": "401",
+            "type": "Object",
+            "optional": false,
+            "field": "AUTH_POST_DISABLED_USER",
+            "description": "<p>The user is disabled. Contact suport to fix that.</p>"
+          }
+        ],
+        "404": [
+          {
+            "group": "404",
+            "type": "Object",
+            "optional": false,
+            "field": "AUTH_POST_INVALID_EMAIL",
+            "description": "<p>The provided email was not found.</p>"
+          }
+        ]
+      }
+    },
     "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
     "groupTitle": "Auth"
   },
@@ -760,6 +798,28 @@ define({ "api": [
             "optional": false,
             "field": "re_password",
             "description": "<p>Same password again.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "type": "Object",
+            "optional": false,
+            "field": "INVALID_POST_DATA",
+            "description": "<p>There's something wrong with the posted data.</p>"
+          }
+        ],
+        "500": [
+          {
+            "group": "500",
+            "type": "Object",
+            "optional": false,
+            "field": "USER_POST_FAIL",
+            "description": "<p>The usar couldn't be created on the database. Probably, the email is already registered.</p>"
           }
         ]
       }
