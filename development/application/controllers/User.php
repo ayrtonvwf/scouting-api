@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends MY_Controller {
+
+	public function __construct() {
+		parent::__construct(false);
+	}
+
 	/**
 	 * @api {get} /user Request User Information
 	 * @apiName UserGet
@@ -26,7 +31,9 @@ class User extends MY_Controller {
 	 * @apiSuccess {String} users.teams.name Name of the Team.
 	 * @apiSuccess {Number} users.teams.number Number of the Team.
 	 */
-	public function get(){ }
+	public function get() : void {
+		$this->_require_token();
+	}
 
 	/**
 	 * @api {post} /user Creates a new User
@@ -39,7 +46,28 @@ class User extends MY_Controller {
 	 * @apiParam {String} password New User password.
 	 * @apiParam {String} re_password Same password again.
 	 */
-	public function post(){ }
+	public function post() : void {
+		if (!$this->_post_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+
+		$user = get_array_values($this->data, ['name', 'email', 'password']);
+		if (!$user_id = $this->user_model->save($user)) {
+			$this->_exit(500);
+		}
+
+		$this->_exit(204);
+	}
+
+	private function _post_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('name', 'Name', 'strip_tags|trim|required|max_length[60]');
+		$this->form_validation->set_rules('email', 'Email', 'strip_tags|trim|required|max_length[200]');
+		$this->form_validation->set_rules('password', 'Password', 'required|max_length[50]|min_length[6]');
+		$this->form_validation->set_rules('re_password', 'Repeat password', 'required|matches[password]');
+		return $this->form_validation->run();
+	}
 
 	/**
 	 * @api {put} /user Updates the current User
@@ -53,7 +81,9 @@ class User extends MY_Controller {
 	 * @apiParam {String} [re_password] Same password again (only if changed the password).
 	 * @apiParam {String} password User password confirmation.
 	 */
-	public function put(){ }
+	public function put() : void {
+		$this->_require_token();
+	}
 
 	/**
 	 * @api {delete} /user Deletes the current User
@@ -63,5 +93,7 @@ class User extends MY_Controller {
 	 * 
 	 * @apiParam {String} password User password.
 	 */
-	public function delete(){ }
+	public function delete() : void {
+		$this->_require_token();
+	}
 }
