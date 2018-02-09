@@ -8,13 +8,15 @@ class MY_Controller extends CI_Controller {
     public function __construct($token_needed = TRUE) {
         parent::__construct();
         
+        $this->load->model('token_model');
+
         $this->output->set_content_type('application/json', 'utf-8');
 
         if ($this->input->server('Accept') !== 'application/json') {
             $this->_exit(406);
         }
 
-        if ($token_needed && !$token = $this->input->server('Token')) {
+        if ($token_needed && !$this->_check_token()) {
             $this->_exit(401);
         }
 
@@ -30,6 +32,14 @@ class MY_Controller extends CI_Controller {
         $this->output->set_status_header($status_code);
         $this->output->_display();
         exit();
+    }
+
+    protected function _check_token() {
+        $token = $this->input->server('Token');
+        if (!$token) {
+            return false;
+        }
+        return $this->token_model->is_valid_token($token);
     }
 }
 ?>
