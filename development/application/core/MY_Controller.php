@@ -10,6 +10,7 @@
 class MY_Controller extends CI_Controller {
 
     protected $data;
+    protected $token;
 
     public function __construct($token_needed = TRUE) {
         parent::__construct();
@@ -45,11 +46,11 @@ class MY_Controller extends CI_Controller {
     }
 
     protected function _has_valid_token() : bool {
-        $token = $this->input->server('Token');
-        if (!$token) {
+        $this->token = $this->input->get_request_header('Token');
+        if (!$this->token) {
             return false;
         }
-        return $this->token_model->is_valid_token($token);
+        return $this->token_model->is_valid_token($this->token);
     }
 
     protected function _require_token() : void {

@@ -27,7 +27,12 @@ class Token_model extends CI_Model {
 
     public function is_valid_token(string $token) : bool {
         $this->db->where('value', $token);
-        $this->db->where('DATE_SUM(CURDATE(), INTERVAL 12 HOURS) <= `created_at`');
-        return (bool) $this->db->count_all_results();
+        $this->db->where('`created_at` > SUBDATE(NOW(), INTERVAL 12 HOUR)');
+        return (bool) $this->db->count_all_results($this->table);
+    }
+
+    public function delete(string $token) : ?bool {
+        $this->db->where('value', $token);
+        return $this->db->delete($this->table);
     }
 }

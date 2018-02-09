@@ -67,7 +67,9 @@ class Auth extends MY_Controller {
 	 *
 	 * @apiSuccess {String} token A new token valid for 12 hours.
 	 */
-	public function renew() {}
+	public function renew() {
+		$this->_require_token();
+	}
 	
 	/**
 	 * @api {delete} /auth Deletes the current Token
@@ -75,5 +77,9 @@ class Auth extends MY_Controller {
 	 * @apiGroup Auth
 	 * @apiVersion 1.0.0
 	 */
-	public function delete() {}
+	public function delete() {
+		$this->_require_token();
+		$this->token_model->delete($this->token);
+		$this->_exit(204);
+	}
 }
