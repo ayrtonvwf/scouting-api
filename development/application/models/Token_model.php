@@ -9,7 +9,7 @@ class Token_model extends CI_Model {
         parent::__construct();
     }
 
-    public function is_valid_token(string $token) {
+    public function is_valid_token(string $token) : bool {
         $this->db->where('value', $token);
         $this->db->where('DATE_SUM(CURDATE(), INTERVAL 12 HOURS) <= `created_at`');
         return (bool) $this->db->count_all_results();
