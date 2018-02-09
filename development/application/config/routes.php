@@ -59,3 +59,9 @@ $route['user'] = array(
     'put'       => 'user/put',
     'delete'    => 'user/delete'
 );
+
+$route['auth'] = array(
+    'get'       => 'auth/get',
+    'post'      => 'auth/post',
+    'delete'    => 'auth/delete'
+);
