@@ -53,6 +53,7 @@ class User extends MY_Controller {
 		}
 
 		$user = get_array_values($this->data, ['name', 'email', 'password']);
+		$user['password'] = password_hash($user['password'], PASSWORD_DEFAULT);
 		if (!$user_id = $this->user_model->save($user)) {
 			$this->_exit(500);
 		}
