@@ -69,6 +69,10 @@ class Auth extends MY_Controller {
 	 */
 	public function renew() {
 		$this->_require_token();
+		$user_id = $this->token_model->get_user_id($this->token);
+		$this->token_model->delete($this->token);
+		$token = $this->token_model->new_token($user_id);
+		echo json_encode(['token' => $token]);
 	}
 	
 	/**

@@ -30,7 +30,8 @@ class MY_Controller extends CI_Controller {
             $this->_require_token();
         }
 
-        $data = json_decode($this->input->raw_input_stream, true);
+        $input = $this->input->raw_input_stream;
+        $data = $input ? json_decode($input, true) : null;
         if (json_last_error() !== JSON_ERROR_NONE) {
             echo json_encode(['error_code' => 'UNPARSABLE_JSON']);
             $this->_exit(400);

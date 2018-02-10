@@ -35,4 +35,11 @@ class Token_model extends CI_Model {
         $this->db->where('value', $token);
         return $this->db->delete($this->table);
     }
+
+    public function get_user_id(string $token) : ?int {
+        $this->db->select('user_id');
+        $this->db->where('value', $token);
+        $result = $this->db->get($this->table);
+        return $result->num_rows() ? $result->row()->user_id : null;
+    }
 }

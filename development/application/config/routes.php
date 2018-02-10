@@ -61,7 +61,7 @@ $route['user'] = array(
 );
 
 $route['auth'] = array(
-    'get'       => 'auth/get',
     'post'      => 'auth/post',
     'delete'    => 'auth/delete'
 );
+$route['auth/renew']['get'] = 'auth/renew';
