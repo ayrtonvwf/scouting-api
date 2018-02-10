@@ -69,3 +69,5 @@ $route['auth/renew']['get'] = 'auth/renew';
 $route['team']['get'] = 'team/get';
 
 $route['period']['get'] = 'period/get';
+
+$route['question_type']['get'] = 'question_type/get';

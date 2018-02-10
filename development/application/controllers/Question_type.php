@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Question_type extends MY_Controller {
 	
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('question_type_model');
+	}
 	/**
 	 * @api {get} /question_type Request Question Type List
 	 * @apiName QuestionTypeGet
@@ -17,6 +21,34 @@ class Question_type extends MY_Controller {
 	 * @apiSuccess {String} question_types.name Name of the Question Type.
 	 * @apiSuccess {DateTime} question_types.created_at Creation date of the Question Type.
 	 */
-	public function get(){ }
+	public function get() : void {
+		$this->_require_token();
+		if (!$this->_get_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+
+		$input_fields = ['id', 'search'];
+		if ($this->data) {
+			$search = get_array_values($this->data, $input_fields);
+		} else {
+			$search = array_fill_keys($input_fields, null);
+		}
+		
+		$question_types = $this->question_type_model->search($search['id'], $search['search']);
+		$question_types = array_map(function($question_type) {
+			return get_array_values($question_type, ['id', 'name', 'created_at']);
+		}, $question_types);
+		
+		echo json_encode(['result' => $question_types]);
+	}
+
+	private function _get_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('id', 'Id', 'strip_tags|trim|integer');
+		$this->form_validation->set_rules('search', 'Search', 'strip_tags|trim');
+		$this->form_validation->run();
+		return !$this->form_validation->error_array();
+	}
 	
 }
