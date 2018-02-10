@@ -804,13 +804,6 @@ define({ "api": [
             "optional": false,
             "field": "password",
             "description": "<p>New User password.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "re_password",
-            "description": "<p>Same password again.</p>"
           }
         ]
       }
@@ -832,7 +825,7 @@ define({ "api": [
             "type": "Object",
             "optional": false,
             "field": "USER_POST_FAIL",
-            "description": "<p>The usar couldn't be created on the database. Probably, the email is already registered.</p>"
+            "description": "<p>The user couldn't be created on the database. Probably, the email is already registered.</p>"
           }
         ]
       }
@@ -874,16 +867,31 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "String",
-            "optional": true,
-            "field": "re_password",
-            "description": "<p>Same password again (only if changed the password).</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
             "optional": false,
             "field": "password",
             "description": "<p>User password confirmation.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "401": [
+          {
+            "group": "401",
+            "type": "Object",
+            "optional": false,
+            "field": "USER_PUT_INVALID_PASSWORD",
+            "description": "<p>The password is wrong.</p>"
+          }
+        ],
+        "500": [
+          {
+            "group": "500",
+            "type": "Object",
+            "optional": false,
+            "field": "USER_PUT_FAIL",
+            "description": "<p>The user couldn't be updated on the database. Probably, the email is already registered.</p>"
           }
         ]
       }

@@ -15,6 +15,10 @@ class User_model extends CI_Model {
         return $result->num_rows() ? $result->row() : null;
     }
 
+    public function password_hash(string $plain_password) : string {
+        return password_hash($plain_password, PASSWORD_DEFAULT);
+    }
+
     public function password_matches(string $plain_password, string $encrypted_password) : bool {
         return password_verify($plain_password, $encrypted_password);
     }
@@ -24,14 +28,35 @@ class User_model extends CI_Model {
             return;
         }
         
-        $new_password = password_hash($plain_password, PASSWORD_DEFAULT);
+        $new_password = $this->password_hash($plain_password);
 
         $this->db->where('id', $id);
         $this->db->update($this->table, ['password' => $new_password]);
     }
 
+    public function password_check(int $user_id, string $plain_password) : bool {
+        $this->db->where('id', $user_id);
+        $user = $this->db->get($this->table);
+
+        if (!$user->num_rows()) {
+            return false;
+        }
+
+        $hash = $user->row()->password;
+        return $this->password_matches($plain_password, $hash);
+    }
+
     public function save(array $data) : ?int {
+        $data['password'] = $this->password_hash($data['password']);
         return $this->db->insert($this->table, $data) ? $this->db->insert_id() : null;
+    }
+
+    public function update(array $data) : bool {
+        if (!empty($data['password'])) {
+            $data['password'] = $this->password_hash($data['password']);
+        }
+        $this->db->where('id', $data['id']);
+        return $this->db->update($this->table, $data);
     }
 
     public function search(int $current_user_id, ?int $search_user_id = null, ?int $search_team_id = null, ?string $search_string = null) : array {
@@ -60,7 +85,7 @@ class User_model extends CI_Model {
     }
 
     private function _get_user_teams_ids(int $user_id) : array {
-        $teams = $this->team_model->get_user_teams($current_user_id);
+        $teams = $this->team_model->get_user_teams($user_id);
         if (!$teams) {
             return [];
         }

@@ -37,14 +37,13 @@ class MY_Controller extends CI_Controller {
         }
     }
     
-    protected function _parse_get_parameters() : ?array {
-        $input = $this->input->get();
-        return $input ? $input : null;
+    protected function _parse_get_parameters() : array {
+        return $this->input->get();
     }
 
-    protected function _parse_body_parameters() : ?array {
+    protected function _parse_body_parameters() : array {
         $input = $this->input->raw_input_stream;
-        $data = $input ? json_decode($input, true) : null;
+        $data = $input ? json_decode($input, true) : [];
         
         if (json_last_error() !== JSON_ERROR_NONE) {
             echo json_encode(['error_code' => 'UNPARSABLE_JSON']);
