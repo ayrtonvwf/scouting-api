@@ -126,6 +126,7 @@ class User extends MY_Controller {
 	 * @apiParam {String} [new_password] New User password.
 	 * @apiParam {String} password User password confirmation.
 	 * 
+	 * @apiUse ErrorPostValidation
 	 * @apiError (401) {Object} USER_PUT_INVALID_PASSWORD The password is wrong.
 	 * @apiError (500) {Object} USER_PUT_FAIL The user couldn't be updated on the database. Probably, the email is already registered.
 	 */
@@ -170,8 +171,35 @@ class User extends MY_Controller {
 	 * @apiVersion 1.0.0
 	 * 
 	 * @apiParam {String} password User password.
+	 * 
+	 * @apiUse ErrorPostValidation
+	 * @apiError (401) {Object} USER_DELETE_INVALID_PASSWORD The password is wrong.
+	 * @apiError (500) {Object} USER_DELETE_FAIL The user couldn't be deleted from the database.
 	 */
 	public function delete() : void {
 		$this->_require_token();
+		if (!$this->_delete_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+		
+		$user_id = $this->token_model->get_user_id($this->token);
+		if (!$this->user_model->password_check($user_id, $this->data['password'])) {
+			echo json(['error_code' => 'USER_PUT_INVALID_PASSWORD']);
+			$this->_exit(401);
+		}
+
+		if (!$this->user_model->update(['id' => $user_id, 'enabled' => false])) {
+			echo json_encode(['error_code' => 'USER_DELETE_FAIL']);
+			$this->_exit(500);
+		}
+
+		$this->_exit(204);
+	}
+
+	private function _delete_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('password', 'Password', 'required|max_length[50]|min_length[6]');
+		return $this->form_validation->run();
 	}
 }
