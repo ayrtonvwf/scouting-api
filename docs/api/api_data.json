@@ -759,7 +759,20 @@
       }
     },
     "filename": "C:/projects/scouting/development/application/controllers/User.php",
-    "groupTitle": "User"
+    "groupTitle": "User",
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "type": "Object",
+            "optional": false,
+            "field": "INVALID_POST_DATA",
+            "description": "<p>There's something wrong with the posted data.</p>"
+          }
+        ]
+      }
+    }
   },
   {
     "type": "post",

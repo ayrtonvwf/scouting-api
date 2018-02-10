@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "General notes",
-    "content": "<h1>General notes</h1>\n<h2>Token</h2>\n<p>In almost every request, a header &quot;Token&quot; is required.</p>\n<p>The exceptions are when the user is not logged in (account creation and the login proccess itself).</p>\n<p>A token is valid for 12 hours, and you can &quot;renew&quot; it anytime you want.</p>\n<h2>Team responsible</h2>\n<p>The first user to be assigned in a team is the team's administrator on the system.</p>\n<p>This user needs to get verified for being the administrator.</p>\n<p>The verification proccess is yet being designed, but may be a manual proccess (like some kind of post on Facebook, proving that the person has access to the Facebook page's administration).</p>\n"
+    "content": "<h1>General notes</h1>\n<h2>Request parameters</h2>\n<p>Request parameters must be sent when needed in the body of the request, in JSON format. The only exception is for GET requests, when the parameters must be sent in the query string.</p>\n<h2>Token</h2>\n<p>In almost every request, a header &quot;Token&quot; is required.</p>\n<p>The exceptions are when the user is not logged in (account creation and the login proccess itself).</p>\n<p>A token is valid for 12 hours, and you can &quot;renew&quot; it anytime you want.</p>\n<h2>Team responsible</h2>\n<p>The first user to be assigned in a team is the team's administrator on the system.</p>\n<p>This user needs to get verified for being the administrator.</p>\n<p>The verification proccess is yet being designed, but may be a manual proccess (like some kind of post on Facebook, proving that the person has access to the Facebook page's administration).</p>\n"
   },
   "order": [
     "Auth",
@@ -33,7 +33,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-02-10T11:35:58.085Z",
+    "time": "2018-02-10T13:01:50.496Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }

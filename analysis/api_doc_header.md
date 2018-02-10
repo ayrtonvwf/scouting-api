@@ -1,5 +1,9 @@
 # General notes
 
+## Request parameters
+
+Request parameters must be sent when needed in the body of the request, in JSON format. The only exception is for GET requests, when the parameters must be sent in the query string.
+
 ## Token
 
 In almost every request, a header "Token" is required.

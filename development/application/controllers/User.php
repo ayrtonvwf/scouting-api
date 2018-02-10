@@ -5,6 +5,7 @@ class User extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct(false);
+		$this->load->model('team_model');
 	}
 
 	/**
@@ -30,9 +31,51 @@ class User extends MY_Controller {
 	 * @apiSuccess {Number} users.teams.id Id of the Team.
 	 * @apiSuccess {String} users.teams.name Name of the Team.
 	 * @apiSuccess {Number} users.teams.number Number of the Team.
+	 * 
+	 * @apiUse ErrorPostValidation
 	 */
 	public function get() : void {
 		$this->_require_token();
+		if (!$this->_get_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+
+		if ($this->data) {
+			$search = get_array_values($this->data, ['id', 'team_id', 'search']);
+		} else {
+			$search = ['id' => null, 'team_id' => null, 'search' => null];
+		}
+
+		$user_id = $this->token_model->get_user_id($this->token);
+		
+		$users = $this->user_model->search($user_id, $search['id'], $search['team_id'], $search['search']);
+		$users = array_map(function($user) {
+			return $this->_prepare_user($user);
+		}, $users);
+		
+		echo json_encode(['result' => $users]);
+	}
+
+	private function _get_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('id', 'Id', 'strip_tags|trim|integer');
+		$this->form_validation->set_rules('team_id', 'Team id', 'strip_tags|trim|integer');
+		$this->form_validation->set_rules('search', 'Search', 'strip_tags|trim');
+		return $this->form_validation->run();
+	}
+
+	private function _prepare_user(array $user) {
+		$user = get_array_values($user, ['id', 'name', 'email', 'verified_email', 'enabled', 'created_at']);
+		$teams = $this->team_model->get_user_teams($user['id']);
+		$user['teams'] = $this->_prepare_teams($teams);
+		return $user;
+	}
+
+	private function _prepare_teams(array $teams) {
+		return array_map(function($team) {
+			return get_array_values($team, ['id', 'name', 'number']);
+		}, $teams);
 	}
 
 	/**

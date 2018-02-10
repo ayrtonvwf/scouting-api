@@ -1,18 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_model extends CI_Model {
+class Team_model extends CI_Model {
     
-    private $table = 'user';
+    private $table = 'team';
 
     public function __construct() {
         parent::__construct();
     }
 
-    public function get_by_email(string $email) : ?stdClass {
-        $this->db->where('email', $email);
-        $result = $this->db->get($this->table);
-        return $result->num_rows() ? $result->row() : null;
+    public function get_user_teams(int $user_id) : array {
+        $this->db->select('team.*');
+        $this->db->join('user_has_team', 'user_has_team.team_id = team.id');
+        $this->db->join('user', 'user.id = user_has_team.user_id');
+        $this->db->where('user.id', $user_id);
+        return $this->db->get($this->table)->result_array();
     }
 
     public function password_matches(string $plain_password, string $encrypted_password) : bool {
@@ -34,8 +36,16 @@ class User_model extends CI_Model {
         return $this->db->insert($this->table, $data) ? $this->db->insert_id() : null;
     }
 
-    public function search(int $current_user_id, ?int $search_user_id = null, ?int $search_team_id = null, ?string $search_string = null) : array {
-        $team_ids = $this->_get_user_teams_ids($current_user_id);
+    public function search(int $current_user_id, ?int $search_user_id = null, ?int $search_team_id = null, ?int $search_string = null) : array {
+        $this->db->select('team.id');
+        $this->db->join('user_has_team', 'user_has_team.team_id = team.id');
+        $this->db->join('user', 'user.id = user_has_team.user_id');
+        $this->db->where('user.id', $current_user_id);
+        $teams = $this->db->get('team')->result_array();
+        if (!$teams) {
+            return [];
+        }
+        $team_ids = array_column($teams, 'id');
 
         $this->db->select('user.*');
         $this->db->join('user_has_team', 'user_has_team.user_id = user.id');
@@ -55,15 +65,6 @@ class User_model extends CI_Model {
             $this->db->or_like('team.number', $search_string);
             $this->db->group_end();
         }
-        
         return $this->db->get($this->table)->result_array();
-    }
-
-    private function _get_user_teams_ids(int $user_id) : array {
-        $teams = $this->team_model->get_user_teams($current_user_id);
-        if (!$teams) {
-            return [];
-        }
-        return array_column($teams, 'id');
     }
 }
