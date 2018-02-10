@@ -67,3 +67,5 @@ $route['auth'] = array(
 $route['auth/renew']['get'] = 'auth/renew';
 
 $route['team']['get'] = 'team/get';
+
+$route['period']['get'] = 'period/get';
