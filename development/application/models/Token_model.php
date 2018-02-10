@@ -26,8 +26,11 @@ class Token_model extends CI_Model {
     }
 
     public function is_valid_token(string $token) : bool {
-        $this->db->where('value', $token);
-        $this->db->where('`created_at` > SUBDATE(NOW(), INTERVAL 12 HOUR)');
+        $this->db->select('token.*');
+        $this->db->join('user', 'user.id = token.user_id');
+        $this->db->where('user.enabled', true);
+        $this->db->where('token.value', $token);
+        $this->db->where('token.created_at > SUBDATE(NOW(), INTERVAL 12 HOUR)');
         return (bool) $this->db->count_all_results($this->table);
     }
 
