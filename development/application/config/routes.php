@@ -65,3 +65,5 @@ $route['auth'] = array(
     'delete'    => 'auth/delete'
 );
 $route['auth/renew']['get'] = 'auth/renew';
+
+$route['team']['get'] = 'team/get';
