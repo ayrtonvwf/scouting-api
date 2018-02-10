@@ -41,10 +41,11 @@ class User extends MY_Controller {
 			$this->_exit(400);
 		}
 
+		$input_fields = ['id', 'team_id', 'search'];
 		if ($this->data) {
-			$search = get_array_values($this->data, ['id', 'team_id', 'search']);
+			$search = get_array_values($this->data, $input_fields);
 		} else {
-			$search = array_fill_keys(['id', 'team_id', 'search'], null);
+			$search = array_fill_keys($input_fields, null);
 		}
 
 		$user_id = $this->token_model->get_user_id($this->token);

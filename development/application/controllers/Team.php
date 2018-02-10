@@ -32,10 +32,11 @@ class Team extends MY_Controller {
 			$this->_exit(400);
 		}
 
+		$input_fields = ['id', 'number_start', 'number_end', 'search'];
 		if ($this->data) {
-			$search = get_array_values($this->data, ['id', 'number_start', 'number_end', 'search']);
+			$search = get_array_values($this->data, $input_fields);
 		} else {
-			$search = array_fill_keys(['id', 'number_start', 'number_end', 'search'], null);
+			$search = array_fill_keys($input_fields, null);
 		}
 		
 		$teams = $this->team_model->search($search['id'], $search['number_start'], $search['number_end'], $search['search']);
