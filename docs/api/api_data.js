@@ -436,17 +436,17 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "questions.description",
-            "description": "<p>Description of the Question.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "Number",
             "optional": false,
             "field": "questions.question_type_id",
             "description": "<p>Id of the Type of the Question.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "questions.description",
+            "description": "<p>Description of the Question.</p>"
           },
           {
             "group": "Success 200",
@@ -468,6 +468,7 @@ define({ "api": [
     "name": "QuestionTypeGet",
     "group": "QuestionType",
     "version": "1.0.0",
+    "description": "<p>These are the available question types:</p> <table> <thead> <tr> <th>Id</th> <th>Name</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>Boolean</td> <td>0 or 1</td> </tr> <tr> <td>2</td> <td>Positive Integer</td> <td>Integer from 0 to 1,000,000</td> </tr> <tr> <td>3</td> <td>Percent</td> <td>Integer from 0 to 100</td> </tr> <tr> <td>4</td> <td>Phrase</td> <td>Small string (max 100 characters)</td> </tr> <tr> <td>5</td> <td>Text</td> <td>Big string (max 1000 characters</td> </tr> <tr> <td>6</td> <td>Seconds</td> <td>0 to 86,400 (60 * 60 * 24 or 1 day)</td> </tr> </tbody> </table>",
     "parameter": {
       "fields": {
         "Parameter": [
