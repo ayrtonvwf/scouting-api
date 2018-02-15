@@ -187,13 +187,6 @@
           },
           {
             "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "evaluations.user_id",
-            "description": "<p>Id of the User.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "DateTime",
             "optional": false,
             "field": "evaluations.created_at",
@@ -249,6 +242,51 @@
             "optional": false,
             "field": "team_id",
             "description": "<p>Id of the evaluated Team.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object[]",
+            "optional": false,
+            "field": "answers",
+            "description": "<p>Answers of the Evaluation.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "answers.question_id",
+            "description": "<p>Id of the Question.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "answers.value",
+            "description": "<p>Value of the Answer.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Evaluation.php",
+    "groupTitle": "Evaluation"
+  },
+  {
+    "type": "put",
+    "url": "/evaluation",
+    "title": "Update the Evaluation",
+    "name": "EvaluationPut",
+    "group": "Evaluation",
+    "version": "1.0.0",
+    "description": "<p>The server deletes all the answers that are not sent in the update. If the client wants to update only one answer, it needs to send all the answers anyway.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id of the Evaluation.</p>"
           },
           {
             "group": "Parameter",

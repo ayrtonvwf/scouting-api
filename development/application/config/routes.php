@@ -76,5 +76,6 @@ $route['question']['get'] = 'question/get';
 
 $route['evaluation'] = array(
     'post'   => 'evaluation/post',
+    'put'   => 'evaluation/put',
     'get'    => 'evaluation/get'
 );
