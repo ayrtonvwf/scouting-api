@@ -7,3 +7,7 @@ function get_array_values(array $array, array $keys) : array{
     }
     return $return_array;
 }
+
+function is_int_string($value) {
+    return is_numeric($value) && ((int) $value == $value);
+}

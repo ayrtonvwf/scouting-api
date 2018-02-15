@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Evaluation extends MY_Controller {
 	
+	public function __construct() {
+		parent::__construct();
+		$this->load->model(['evaluation_model', 'question_model']);
+	}
 	/**
 	 * @api {get} /evaluation Request Evaluation List
 	 * @apiName EvaluationGet
@@ -27,16 +31,98 @@ class Evaluation extends MY_Controller {
 	public function get(){ }
 	
 	/**
-	 * @api {put} /evaluation Save or update Evaluation
-	 * @apiName EvaluationPut
+	 * @api {post} /evaluation Save Evaluation
+	 * @apiName EvaluationPost
 	 * @apiGroup Evaluation
 	 * @apiVersion 1.0.0
 	 * 
-	 * @apiParam {Number} [id] Id of the Evaluation (if update).
 	 * @apiParam {Number} team_id Id of the evaluated Team.
 	 * @apiParam {Object[]} answers Answers of the Evaluation.
 	 * @apiParam {Number} answers.question_id Id of the Question.
 	 * @apiParam {Number} answers.value Value of the Answer.
 	 */
-	public function put(){ }
+	public function post() : void {
+		if (!$this->_post_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+
+		$data = [
+			'team_id' => $this->data['team_id'],
+			'user_id' => $this->token_model->get_user_id($this->token)
+		];
+
+		echo json_encode($this->evaluation_model->save($data, $this->data['answers']));
+	}
+
+	private function _post_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('team_id', 'Team Id', 'strip_tags|trim|integer|required');
+		$this->form_validation->run();
+		if ($this->form_validation->error_array()) {
+			return false;
+		}
+
+		foreach ($this->data['answers'] as $index => $answer) {
+			if ($error_message = $this->_answer_error($answer)) {
+				$safe_index = trim(strip_tags($index));
+				$this->custom_error_array["answers[$safe_index]"] = $error_message;
+			}
+		}
+
+		return !$this->custom_error_array;
+	}
+	
+	private function _answer_error($answer) : ?string {
+		if (!is_array($answer)) {
+			return 'The answer is not an object';
+		}
+
+		if (!$answer) {
+			return 'The answer is empty';
+		}
+
+		if (!isset($answer['question_id'])) {
+			return 'The answer has not a question_id';
+		}
+
+		if (!isset($answer['value'])) {
+			return 'The answer has not a value';
+		}
+		
+		if (!is_numeric($answer['question_id']) || !$this->question_model->get_by_id($answer['question_id'])) {
+			return 'The answer has not a valid question_id';
+		}
+
+		if (!$this->_is_valid_answer_value($answer['question_id'], $answer['value'])) {
+			return 'The answer has not a valid value';
+		}
+
+		return null;
+	}
+
+	private function _is_valid_answer_value(int $question_id, $answer_value) : bool {
+		$question = $this->question_model->get_by_id($question_id);
+		switch ($question->question_type_id) {
+			case QUESTION_TYPE['BOOLEAN'] :
+				return is_int_string($answer_value) && in_array($answer_value, ['0', '1']);
+
+			case QUESTION_TYPE['POSITIVE_INTEGER'] :
+				return is_int_string($answer_value) && $answer_value >= 0 && $answer_value <= 1000000;
+
+			case QUESTION_TYPE['PERCENT'] :
+				return is_int_string($answer_value) && $answer_value >= 0 && $answer_value <= 100;
+
+			case QUESTION_TYPE['PHRASE'] :
+				return strlen($answer_value) <= 100;
+
+			case QUESTION_TYPE['TEXT'] :
+				return strlen($answer_value) <= 1000;
+
+			case QUESTION_TYPE['SECONDS'] :
+				return is_int_string($answer_value) && $answer_value >= 0 && $answer_value <= 60 * 60 * 24;
+		}
+
+		$this->_exit(500);
+	}
 }

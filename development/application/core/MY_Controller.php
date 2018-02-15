@@ -11,6 +11,7 @@ class MY_Controller extends CI_Controller {
 
     protected $data;
     protected $token;
+    protected $custom_error_array = [];
 
     public function __construct($token_needed = TRUE) {
         parent::__construct();
@@ -75,7 +76,11 @@ class MY_Controller extends CI_Controller {
     }
 
     protected function _output_validation_errors() : void {
-        $output = array('error_code' => 'INVALID_POST_DATA', 'error_messages' => $this->form_validation->error_array());
+        $error_messages = $this->form_validation->error_array();
+        if (!$error_messages) {
+            $error_messages = $this->custom_error_array;
+        }
+        $output = array('error_code' => 'INVALID_POST_DATA', 'error_messages' => $error_messages);
         echo json_encode($output);
     }
 }

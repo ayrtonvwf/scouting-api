@@ -26,4 +26,10 @@ class Question_model extends CI_Model {
         return $this->db->get($this->table)->result_array();
     }
 
+    public function get_by_id(int $id) : ?stdClass {
+        $this->db->where('id', $id);
+        $result = $this->db->get($this->table);
+        return $result->num_rows() ? $result->row() : null;
+    }
+
 }

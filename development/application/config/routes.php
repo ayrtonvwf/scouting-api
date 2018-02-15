@@ -73,3 +73,8 @@ $route['period']['get'] = 'period/get';
 $route['question_type']['get'] = 'question_type/get';
 
 $route['question']['get'] = 'question/get';
+
+$route['evaluation'] = array(
+    'post'   => 'evaluation/post',
+    'get'    => 'evaluation/get'
+);
