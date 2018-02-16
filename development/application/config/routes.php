@@ -53,6 +53,8 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['(:any)']['options'] = 'cors/options';
+
 $route['user'] = array(
     'get'       => 'user/get',
     'post'      => 'user/post',

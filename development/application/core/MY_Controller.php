@@ -20,9 +20,12 @@ class MY_Controller extends CI_Controller {
         $this->load->model(['token_model', 'user_model']);
         $this->load->library(['form_validation', 'encryption']);
 
-        $this->output->set_content_type('application/json', 'utf-8');
-
-        if ($this->input->get_request_header('Accept') !== 'application/json') {
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Token');
+        header('Cache-Control: no-cache');
+        
+        if ($this->input->method(true) !== 'OPTIONS' && $this->input->get_request_header('Accept') !== 'application/json') {
             echo json_encode(['error_code' => 'UNNACEPTABLE']);
             $this->_exit(406);
         }
