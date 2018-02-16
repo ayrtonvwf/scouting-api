@@ -144,7 +144,7 @@ class User extends MY_Controller {
 		$user = array_filter($user);
 
 		if (!$this->user_model->password_check($user['id'], $this->data['password'])) {
-			echo json(['error_code' => 'USER_PUT_INVALID_PASSWORD']);
+			echo json_encode(['error_code' => 'USER_PUT_INVALID_PASSWORD']);
 			$this->_exit(401);
 		}
 
@@ -186,7 +186,7 @@ class User extends MY_Controller {
 		
 		$user_id = $this->token_model->get_user_id($this->token);
 		if (!$this->user_model->password_check($user_id, $this->data['password'])) {
-			echo json(['error_code' => 'USER_PUT_INVALID_PASSWORD']);
+			echo json_encode(['error_code' => 'USER_PUT_INVALID_PASSWORD']);
 			$this->_exit(401);
 		}
 
