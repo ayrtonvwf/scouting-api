@@ -55,20 +55,24 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['(:any)']['options'] = 'cors/options';
 
-$route['user'] = array(
+$route['user'] = [
     'get'       => 'user/get',
     'post'      => 'user/post',
     'put'       => 'user/put',
     'delete'    => 'user/delete'
-);
+];
 
-$route['auth'] = array(
+$route['auth'] = [
     'post'      => 'auth/post',
     'delete'    => 'auth/delete'
-);
+];
 $route['auth/renew']['get'] = 'auth/renew';
 
-$route['team']['get'] = 'team/get';
+$route['team'] = [
+    'get' => 'team/get',
+    'post' => 'team/post',
+    'delete' => 'team/delete'
+];
 
 $route['period']['get'] = 'period/get';
 
@@ -76,8 +80,8 @@ $route['question_type']['get'] = 'question_type/get';
 
 $route['question']['get'] = 'question/get';
 
-$route['evaluation'] = array(
+$route['evaluation'] = [
     'post'   => 'evaluation/post',
     'put'   => 'evaluation/put',
     'get'    => 'evaluation/get'
-);
+];

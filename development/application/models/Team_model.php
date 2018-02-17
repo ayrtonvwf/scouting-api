@@ -37,4 +37,29 @@ class Team_model extends CI_Model {
         return $this->db->get($this->table)->result_array();
     }
 
+    public function join(int $team_id, int $user_id) : bool {
+        $this->db->where('team_id', $team_id);
+        $this->db->where('is_admin', true);
+        $has_admin = (bool) $this->db->count_all_results('user_has_team');
+
+        $data = [
+            'team_id' => $team_id,
+            'user_id' => $user_id,
+            'is_admin' => !$has_admin
+        ];
+        return $this->db->insert('user_has_team', $data);
+    }
+
+    public function leave(int $team_id, int $user_id) : bool {
+        $this->db->where('team_id', $team_id);
+        $this->db->where('user_id', $user_id);
+        return $this->db->delete('user_has_team');
+    }
+    
+    public function has_user(int $team_id, int $user_id) : bool {
+        $this->db->where('team_id', $team_id);
+        $this->db->where('user_id', $user_id);
+        return (bool) $this->db->count_all_results('user_has_team');
+    }
+
 }

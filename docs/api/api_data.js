@@ -558,6 +558,29 @@ define({ "api": [
     "groupTitle": "QuestionType"
   },
   {
+    "type": "delete",
+    "url": "/team",
+    "title": "Leave a Team",
+    "name": "TeamDelete",
+    "group": "Team",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "id",
+            "description": "<p>Team id.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
+    "groupTitle": "Team"
+  },
+  {
     "type": "get",
     "url": "/team",
     "title": "Request Team List",
@@ -642,6 +665,29 @@ define({ "api": [
             "optional": false,
             "field": "teams.created_at",
             "description": "<p>Creation date of the Team.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
+    "groupTitle": "Team"
+  },
+  {
+    "type": "post",
+    "url": "/team",
+    "title": "Join a Team",
+    "name": "TeamPost",
+    "group": "Team",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "id",
+            "description": "<p>Team id.</p>"
           }
         ]
       }

@@ -7,6 +7,7 @@ class Team extends MY_Controller {
 		parent::__construct();
 		$this->load->model('team_model');
 	}
+	
 	/**
 	 * @api {get} /team Request Team List
 	 * @apiName TeamGet
@@ -53,6 +54,74 @@ class Team extends MY_Controller {
 		$this->form_validation->set_rules('number_start', 'Number start', 'strip_tags|trim|integer|greater_than[0]');
 		$this->form_validation->set_rules('number_end', 'Number end', 'strip_tags|trim|greater_than[0]');
 		$this->form_validation->set_rules('search', 'Search', 'strip_tags|trim');
+		$this->form_validation->run();
+		return !$this->form_validation->error_array();
+	}
+
+	/**
+	 * @api {post} /team Join a Team
+	 * @apiName TeamPost
+	 * @apiGroup Team
+	 * @apiVersion 1.0.0
+	 * 
+	 * @apiParam {Number} [id] Team id.
+	 */
+	public function post() : void {
+		if (!$this->_post_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+
+		$user_id = $this->token_model->get_user_id($this->token);
+		$team_id = $this->data['id'];
+		if ($this->team_model->has_user($team_id, $user_id)) {
+			$this->_exit(200);
+		}
+
+		if (!$this->team_model->join($team_id, $user_id)) {
+			$this->_exit(500);
+		}
+
+		$this->_exit(201);
+	}
+
+	private function _post_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('id', 'Id', 'strip_tags|trim|integer|required');
+		$this->form_validation->run();
+		return !$this->form_validation->error_array();
+	}
+
+	/**
+	 * @api {delete} /team Leave a Team
+	 * @apiName TeamDelete
+	 * @apiGroup Team
+	 * @apiVersion 1.0.0
+	 * 
+	 * @apiParam {Number} [id] Team id.
+	 */
+	public function delete() : void {
+		if (!$this->_delete_validate()) {
+			$this->_output_validation_errors();
+			$this->_exit(400);
+		}
+
+		$user_id = $this->token_model->get_user_id($this->token);
+		$team_id = $this->data['id'];
+		if (!$this->team_model->has_user($team_id, $user_id)) {
+			$this->_exit(404);
+		}
+
+		if (!$this->team_model->leave($team_id, $user_id)) {
+			$this->_exit(500);
+		}
+
+		$this->_exit(200);
+	}
+
+	private function _delete_validate() : bool {
+		$this->form_validation->set_data($this->data);
+		$this->form_validation->set_rules('id', 'Id', 'strip_tags|trim|integer|required');
 		$this->form_validation->run();
 		return !$this->form_validation->error_array();
 	}
