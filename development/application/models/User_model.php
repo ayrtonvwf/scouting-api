@@ -84,7 +84,7 @@ class User_model extends CI_Model {
             $this->db->or_like('team.number', $search_string);
             $this->db->group_end();
         }
-        
+        $this->db->group_by('user.id');
         return $this->db->get($this->table)->result_array();
     }
 
