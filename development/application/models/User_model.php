@@ -61,6 +61,9 @@ class User_model extends CI_Model {
 
     public function search(int $current_user_id, ?int $search_user_id = null, ?int $search_team_id = null, ?string $search_string = null) : array {
         $team_ids = $this->_get_user_teams_ids($current_user_id);
+        if (!$team_ids) {
+            return [];
+        }
 
         $this->db->select('user.*');
         $this->db->join('user_has_team', 'user_has_team.user_id = user.id');
