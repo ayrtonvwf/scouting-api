@@ -63,9 +63,13 @@ class User_model extends CI_Model {
         $team_ids = $this->_get_user_teams_ids($current_user_id);
 
         $this->db->select('user.*');
-        $this->db->join('user_has_team', 'user_has_team.user_id = user.id');
-        $this->db->join('team', 'team.id = user_has_team.team_id');
-        $this->db->where_in('team.id', $team_ids);
+        $this->db->join('user_has_team', 'user_has_team.user_id = user.id', 'left');
+        $this->db->join('team', 'team.id = user_has_team.team_id', 'left');
+        if ($team_ids) {
+            $this->db->where_in('team.id', $team_ids);
+        } else {
+            $this->db->where('user.id', $current_user_id);
+        }
         if ($search_user_id) {
             $this->db->where('user.id', $search_user_id);
         }
