@@ -22,7 +22,6 @@ class Question_type extends MY_Controller {
 	 * | 3 | Percent			| Integer from 0 to 100					|
 	 * | 4 | Phrase				| Small string (max 100 characters)		|
 	 * | 5 | Text				| Big string (max 1000 characters)		|
-	 * | 6 | Seconds			| 0 to 86,400 (60 * 60 * 24 or 1 day)	|
 	 * 
 	 * @apiParam {Number} [id] Id of the Question Type.
 	 * @apiParam {String} [search] Search string.

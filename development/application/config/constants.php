@@ -89,6 +89,5 @@ const QUESTION_TYPE = [
     'POSITIVE_INTEGER' => 2,
     'PERCENT' => 3,
     'PHRASE' => 4,
-    'TEXT' => 5,
-    'SECONDS' >= 6
+    'TEXT' => 5
 ];

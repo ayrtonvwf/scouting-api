@@ -203,9 +203,6 @@ class Evaluation extends MY_Controller {
 
 			case QUESTION_TYPE['TEXT'] :
 				return strlen($answer_value) <= 1000;
-
-			case QUESTION_TYPE['SECONDS'] :
-				return is_int_string($answer_value) && $answer_value >= 0 && $answer_value <= 60 * 60 * 24;
 		}
 
 		$this->_exit(500);
