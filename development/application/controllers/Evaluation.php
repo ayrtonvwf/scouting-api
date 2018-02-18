@@ -20,6 +20,7 @@ class Evaluation extends MY_Controller {
 	 *
 	 * @apiSuccess {Object[]} evaluations List of Evaluations
 	 * @apiSuccess {Number} evaluations.id Id of the Evaluation.
+	 * @apiSuccess {Boolean} evaluations.self Whether the Evaluation was created by the current user.
 	 * @apiSuccess {Number} evaluations.team_id Id of the evaluated Team.
 	 * @apiSuccess {DateTime} evaluations.created_at Creation date of the Evaluation.
 	 * @apiSuccess {Object[]} evaluations.answers List of Answers in the Evaluation.
@@ -40,7 +41,9 @@ class Evaluation extends MY_Controller {
 			$search = array_fill_keys($input_fields, null);
 		}
 
-		$evaluations = $this->evaluation_model->search($search['id'], $search['team_id'], $search['date_start'], $search['date_end']);
+		$user_id = $this->token_model->get_user_id($this->token);
+
+		$evaluations = $this->evaluation_model->search($user_id, $search['id'], $search['team_id'], $search['date_start'], $search['date_end']);
 		$evaluations = array_map(function($evaluation) {
 			return $this->_prepare_evaluation($evaluation);
 		}, $evaluations);
@@ -59,7 +62,7 @@ class Evaluation extends MY_Controller {
 	}
 
 	private function _prepare_evaluation(array $evaluation) {
-		$evaluation = get_array_values($evaluation, ['id', 'team_id', 'created_at']);
+		$evaluation = get_array_values($evaluation, ['id', 'self', 'team_id', 'created_at']);
 		$answers = $this->evaluation_model->get_evaluation_answers($evaluation['id']);
 		$evaluation['answers'] = $this->_prepare_answers($answers);
 		return $evaluation;

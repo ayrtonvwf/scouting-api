@@ -180,6 +180,13 @@
           },
           {
             "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "evaluations.self",
+            "description": "<p>Whether the Evaluation was created by the current user.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "Number",
             "optional": false,
             "field": "evaluations.team_id",

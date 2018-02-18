@@ -42,7 +42,9 @@ class Evaluation_model extends CI_Model {
         return $this->db->trans_complete();
     }
     
-    public function search(?int $id = null, ?int $team_id = null, ?string $date_start = null, ?string $date_end = null) : array {
+    public function search(int $current_user_id, ?int $id = null, ?int $team_id = null, ?string $date_start = null, ?string $date_end = null) : array {
+        $this->db->select('evaluation.*');
+        $this->db->select("(user_id = $current_user_id) AS self");
         if ($id) {
             $this->db->where('id', $id);
         }
