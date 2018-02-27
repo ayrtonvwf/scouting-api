@@ -1,0 +1,14 @@
+{
+    "name": "roosters7033/scouting-api",
+    "description": "A API for FRC scouting as a service",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "authors": [
+        {
+            "name": "Ayrton Fidelis",
+            "email": "ayrton.vargas33@gmail.com"
+        }
+    ]
+}

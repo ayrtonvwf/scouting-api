@@ -36,6 +36,15 @@
  * @filesource
  */
 
+ include_once('application/vendor/autoload.php');
+
+// loads .env file
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
+// set the right environment config
+define('ENVIRONMENT', getenv('ENVIRONMENT'));
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -53,7 +62,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
