@@ -6,7 +6,7 @@
     "name": "AuthDelete",
     "group": "Auth",
     "version": "1.0.0",
-    "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Auth.php",
     "groupTitle": "Auth"
   },
   {
@@ -94,7 +94,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Auth.php",
     "groupTitle": "Auth"
   },
   {
@@ -117,7 +117,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Auth.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Auth.php",
     "groupTitle": "Auth"
   },
   {
@@ -230,7 +230,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Evaluation.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Evaluation.php",
     "groupTitle": "Evaluation"
   },
   {
@@ -274,7 +274,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Evaluation.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Evaluation.php",
     "groupTitle": "Evaluation"
   },
   {
@@ -319,93 +319,8 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Evaluation.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Evaluation.php",
     "groupTitle": "Evaluation"
-  },
-  {
-    "type": "get",
-    "url": "/period",
-    "title": "Request Period List",
-    "name": "PeriodGet",
-    "group": "Period",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>Period id.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "position_start",
-            "description": "<p>First position of the Period.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "position_end",
-            "description": "<p>End position of the Period.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "search",
-            "description": "<p>Search string.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "periods",
-            "description": "<p>List of Periods</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "periods.id",
-            "description": "<p>Id of the Period.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "periods.name",
-            "description": "<p>Name of the Period.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "periods.position",
-            "description": "<p>Position of the Period.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "DateTime",
-            "optional": false,
-            "field": "periods.created_at",
-            "description": "<p>Creation date of the Period.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/Period.php",
-    "groupTitle": "Period"
   },
   {
     "type": "get",
@@ -423,13 +338,6 @@
             "optional": true,
             "field": "id",
             "description": "<p>Id of the Question.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "period_id",
-            "description": "<p>Id of the Period of the Questions.</p>"
           },
           {
             "group": "Parameter",
@@ -463,14 +371,7 @@
             "type": "Number",
             "optional": false,
             "field": "questions.id",
-            "description": "<p>Id of the Team.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "questions.period_id",
-            "description": "<p>Id of the Period of the Questions.</p>"
+            "description": "<p>Id of the Question.</p>"
           },
           {
             "group": "Success 200",
@@ -496,7 +397,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Question.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Question.php",
     "groupTitle": "Question"
   },
   {
@@ -561,31 +462,8 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Question_type.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Question_type.php",
     "groupTitle": "QuestionType"
-  },
-  {
-    "type": "delete",
-    "url": "/team",
-    "title": "Leave a Team",
-    "name": "TeamDelete",
-    "group": "Team",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>Team id.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
-    "groupTitle": "Team"
   },
   {
     "type": "get",
@@ -661,13 +539,6 @@
           },
           {
             "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "teams.enabled",
-            "description": "<p>Wether the Team is enabled to submit evaluations.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "DateTime",
             "optional": false,
             "field": "teams.created_at",
@@ -676,30 +547,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
-    "groupTitle": "Team"
-  },
-  {
-    "type": "post",
-    "url": "/team",
-    "title": "Join a Team",
-    "name": "TeamPost",
-    "group": "Team",
-    "version": "1.0.0",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>Team id.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "C:/projects/scouting/development/application/controllers/Team.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/Team.php",
     "groupTitle": "Team"
   },
   {
@@ -753,7 +601,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/User.php",
     "groupTitle": "User"
   },
   {
@@ -763,118 +611,48 @@
     "name": "UserGet",
     "group": "User",
     "version": "1.0.0",
-    "description": "<p>The only users that are accessible are the ones in the same teams as the current user</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>User id.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "team_id",
-            "description": "<p>Id of the Team.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "search",
-            "description": "<p>Search string.</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "fields": {
         "Success 200": [
           {
             "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "users",
-            "description": "<p>List of Users.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "Number",
             "optional": false,
-            "field": "users.id",
+            "field": "id",
             "description": "<p>Id of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "users.name",
+            "field": "name",
             "description": "<p>Name of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "users.email",
+            "field": "email",
             "description": "<p>Email of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "users.verified_email",
+            "field": "verified_email",
             "description": "<p>Whether the User has verified it's email address.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "users.enabled",
-            "description": "<p>Whether the User is enabled for submiting evaluations.</p>"
           },
           {
             "group": "Success 200",
             "type": "DateTime",
             "optional": false,
-            "field": "users.created_at",
+            "field": "created_at",
             "description": "<p>Creation date of the User.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "users.teams",
-            "description": "<p>List of Teams that the user is in.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "users.teams.id",
-            "description": "<p>Id of the Team.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "users.teams.name",
-            "description": "<p>Name of the Team.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "users.teams.number",
-            "description": "<p>Number of the Team.</p>"
           }
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/User.php",
     "groupTitle": "User",
     "error": {
       "fields": {
@@ -946,7 +724,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/User.php",
     "groupTitle": "User"
   },
   {
@@ -1021,7 +799,7 @@
         ]
       }
     },
-    "filename": "C:/projects/scouting/development/application/controllers/User.php",
+    "filename": "/home/ayrton/projects/scouting/development/application/controllers/User.php",
     "groupTitle": "User"
   }
 ]

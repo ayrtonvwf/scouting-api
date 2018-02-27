@@ -9,12 +9,9 @@ class Question_model extends CI_Model {
         parent::__construct();
     }
     
-    public function search(?int $id = null, ?int $period_id = null, ?int $question_type_id = null, ?string $search_string = null) : array {
+    public function search(?int $id = null, ?int $question_type_id = null, ?string $search_string = null) : array {
         if ($id) {
             $this->db->where('id', $id);
-        }
-        if ($period_id) {
-            $this->db->where('period_id', $period_id);
         }
         if ($question_type_id) {
             $this->db->where('question_type_id', $question_type_id);

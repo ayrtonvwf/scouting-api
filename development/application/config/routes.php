@@ -68,13 +68,7 @@ $route['auth'] = [
 ];
 $route['auth/renew']['get'] = 'auth/renew';
 
-$route['team'] = [
-    'get' => 'team/get',
-    'post' => 'team/post',
-    'delete' => 'team/delete'
-];
-
-$route['period']['get'] = 'period/get';
+$route['team']['get'] = 'team/get';
 
 $route['question_type']['get'] = 'question_type/get';
 

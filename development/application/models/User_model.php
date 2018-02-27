@@ -9,6 +9,12 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
+    public function get_by_id(int $id) : ?array {
+        $this->db->where('id', $id);
+        $result = $this->db->get($this->table);
+        return $result->num_rows() ? $result->row_array() : null;
+    }
+
     public function get_by_email(string $email) : ?stdClass {
         $this->db->where('email', $email);
         $result = $this->db->get($this->table);
@@ -57,42 +63,5 @@ class User_model extends CI_Model {
         }
         $this->db->where('id', $data['id']);
         return $this->db->update($this->table, $data);
-    }
-
-    public function search(int $current_user_id, ?int $search_user_id = null, ?int $search_team_id = null, ?string $search_string = null) : array {
-        $team_ids = $this->_get_user_teams_ids($current_user_id);
-
-        $this->db->select('user.*');
-        $this->db->join('user_has_team', 'user_has_team.user_id = user.id', 'left');
-        $this->db->join('team', 'team.id = user_has_team.team_id', 'left');
-        if ($team_ids) {
-            $this->db->where_in('team.id', $team_ids);
-        } else {
-            $this->db->where('user.id', $current_user_id);
-        }
-        if ($search_user_id) {
-            $this->db->where('user.id', $search_user_id);
-        }
-        if ($search_team_id) {
-            $this->db->where('team.id', $search_team_id);
-        }
-        if ($search_string) {
-            $this->db->group_start();
-            $this->db->like('user.name', $search_string);
-            $this->db->or_like('user.email', $search_string);
-            $this->db->or_like('team.name', $search_string);
-            $this->db->or_like('team.number', $search_string);
-            $this->db->group_end();
-        }
-        $this->db->group_by('user.id');
-        return $this->db->get($this->table)->result_array();
-    }
-
-    private function _get_user_teams_ids(int $user_id) : array {
-        $teams = $this->team_model->get_user_teams($user_id);
-        if (!$teams) {
-            return [];
-        }
-        return array_column($teams, 'id');
     }
 }
