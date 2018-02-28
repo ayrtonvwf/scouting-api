@@ -91,3 +91,8 @@ const QUESTION_TYPE = [
     'PHRASE' => 4,
     'TEXT' => 5
 ];
+
+const TBA_URL = 'https://www.thebluealliance.com/api/v3';
+const TBA_MAX_TEAM_PAGE = 15;
+define('TBA_TOKEN', getenv('TBA_TOKEN'));
+define('ENABLE_TEAM_LOAD', getenv('ENABLE_TEAM_LOAD'));

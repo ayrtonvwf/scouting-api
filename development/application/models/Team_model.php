@@ -28,4 +28,8 @@ class Team_model extends CI_Model {
         
         return $this->db->get($this->table)->result_array();
     }
+
+    public function save_batch(array $teams) : bool {
+        return $this->db->insert_batch($this->table, $teams);
+    }
 }
